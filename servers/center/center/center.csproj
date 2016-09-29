@@ -170,6 +170,21 @@
     <Compile Include="..\..\..\common\juggle_protcol\c#\caller\logic_call_logiccaller.cs">
       <Link>logic_call_logiccaller.cs</Link>
     </Compile>
+    <Compile Include="..\..\..\juggle\csharp\Icaller.cs">
+      <Link>Icaller.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\juggle\csharp\Ichannel.cs">
+      <Link>Ichannel.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\juggle\csharp\Imodule.cs">
+      <Link>Imodule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\juggle\csharp\process.cs">
+      <Link>process.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\jsonparse\csharp\JsonParser.cs">
+      <Link>JsonParser.cs</Link>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
