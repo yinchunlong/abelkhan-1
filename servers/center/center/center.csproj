@@ -185,6 +185,10 @@
     <Compile Include="..\..\..\jsonparse\csharp\JsonParser.cs">
       <Link>JsonParser.cs</Link>
     </Compile>
+    <Compile Include="hubmanager.cs" />
+    <Compile Include="dbproxy.cs" />
+    <Compile Include="hubproxy.cs" />
+    <Compile Include="gmmanager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,1 +1,19 @@
-﻿<Properties StartupItem="center/center.csproj" />
+﻿<Properties StartupItem="center/center.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="center/center.cs">
+    <Files>
+      <File FileName="center/center.cs" Line="114" Column="3" />
+      <File FileName="center/gm_msg_handle.cs" Line="17" Column="10" />
+      <File FileName="center/gmmanager.cs" Line="26" Column="14" />
+      <File FileName="center/svrmanager.cs" Line="46" Column="22" />
+      <File FileName="center/logicmanager.cs" Line="36" Column="21" />
+      <File FileName="center/hubmanager.cs" Line="26" Column="21" />
+      <File FileName="center/svr_msg_handle.cs" Line="54" Column="56" />
+      <File FileName="center/logic_svr_msg_handle.cs" Line="23" Column="5" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

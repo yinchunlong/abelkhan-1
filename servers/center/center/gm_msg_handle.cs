@@ -2,11 +2,31 @@
 
 namespace center
 {
-	class MainClass
+	class gm_msg_handle
 	{
-		public static void Main (string[] args)
+		public gm_msg_handle(gmmanager _gmmanager_)
 		{
-			Console.WriteLine ("Hello World!");
+			_gmmanager = _gmmanager_;
 		}
+
+		public void confirm_gm(String gm_name)
+		{
+			_gmmanager.reg_gm(gm_name, juggle.Imodule.current_ch);
+		}
+
+		public void close_clutter(String gmname)
+		{
+			if (_gmmanager.check_gm (gmname, juggle.Imodule.current_ch)) 
+			{
+				_svrmanager.for_each_svr(
+					(svrproxy _svrproxy) => {
+						_svrproxy.close_server();
+					}
+				);
+			}
+		}
+
+		private gmmanager _gmmanager;
+		private svrmanager _svrmanager;
 	}
 }
