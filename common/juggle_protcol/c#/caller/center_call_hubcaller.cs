@@ -12,14 +12,14 @@ namespace caller
             module_name = "center_call_hub";
         }
 
-        public void distribute_dbproxy_address(String argv0,String argv1,Int64 argv2,String argv3)
+        public void distribute_server_address(String argv0,String argv1,Int64 argv2,String argv3)
         {
             ArrayList _argv = new ArrayList();
             _argv.Add(argv0);
             _argv.Add(argv1);
             _argv.Add(argv2);
             _argv.Add(argv3);
-            call_module_method("distribute_dbproxy_address", _argv);
+            call_module_method("distribute_server_address", _argv);
         }
 
     }

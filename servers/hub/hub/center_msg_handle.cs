@@ -22,10 +22,17 @@ namespace hub
 			_closehandle.is_close = true;
 		}
 
-		public void distribute_dbproxy_address(String type, String ip, Int64 port, String uuid)
+		public void distribute_server_address(String type, String ip, Int64 port, String uuid)
 		{
-			Console.WriteLine("recv distribute dbproxy address");
-			_hub.connect_dbproxy(ip, (short)port);
+			Console.WriteLine("recv distribute server address");
+			if (type == "dbproxy") 
+			{
+				_hub.connect_dbproxy (ip, (short)port);
+			}
+			if (type == "gate") 
+			{
+				hub.gates.connect_gate(uuid, ip, (short)port);
+			}
 		}
 
 		private hub _hub;

@@ -46,7 +46,7 @@ namespace hub
 			_center_msg_handle = new center_msg_handle(this, closeHandle, _centerproxy);
 			_center_call_server.onreg_server_sucess += _center_msg_handle.reg_server_sucess;
 			_center_call_server.onclose_server += _center_msg_handle.close_server;
-			_center_call_hub.ondistribute_dbproxy_address += _center_msg_handle.distribute_dbproxy_address;
+			_center_call_hub.ondistribute_server_address += _center_msg_handle.distribute_server_address;
 
 			var _dbproxy_process = new juggle.process();
 			_connect_dbproxy_service = new service.connectnetworkservice(_dbproxy_process);
@@ -59,10 +59,20 @@ namespace hub
 			_dbproxy_call_hub.onack_get_object_info_end += _dbproxy_msg_handle.ack_get_object_info_end;
 			_dbproxy_process.reg_module(_dbproxy_call_hub);
 
+			juggle.process _gate_process = new juggle.process();
+			_gate_msg_handle = new gate_msg_handle(modules);
+			_gate_call_hub = new module.gate_call_hub();
+			_gate_call_hub.onreg_hub_sucess += _gate_msg_handle.onreg_hub_sucess;
+			_gate_call_hub.onclient_call_hub += _gate_msg_handle.client_call_logic;
+			_gate_process.reg_module (_gate_call_hub);
+			_connect_gate_servcie = new service.connectnetworkservice (_gate_process);
+			gates = new gatemanager (_connect_gate_servcie);
+
 			_juggle_service = new service.juggleservice();
 			_juggle_service.add_process(_logic_process);
 			_juggle_service.add_process(_center_process);
 			_juggle_service.add_process(_dbproxy_process);
+			_juggle_service.add_process (_gate_process);
 
 			timer = new service.timerservice();
 
@@ -83,6 +93,7 @@ namespace hub
 			_accept_logic_service.poll(tick);
 			_connect_center_service.poll(tick);
 			_connect_dbproxy_service.poll(tick);
+			_connect_gate_servcie.poll (tick);
 		}
 
 		private static void Main(String[] args)
@@ -110,7 +121,7 @@ namespace hub
 
 				if (closeHandle.is_close)
 				{
-					Console.WriteLine("server closed, hub server " + _hub.uuid);
+					Console.WriteLine("server closed, hub server " + hub.uuid);
 					break;
 				}
 
@@ -132,7 +143,7 @@ namespace hub
 
 		public static String name;
 
-		private String uuid;
+		public static String uuid;
 
 		public static closehandle closeHandle;
 
@@ -152,6 +163,11 @@ namespace hub
 		private module.dbproxy_call_hub _dbproxy_call_hub;
 		public static dbproxyproxy dbproxy;
 		private dbproxy_msg_handle _dbproxy_msg_handle;
+
+		private service.connectnetworkservice _connect_gate_servcie;
+		private module.gate_call_hub _gate_call_hub;
+		public static gatemanager gates;
+		private gate_msg_handle _gate_msg_handle;
 
 		private service.juggleservice _juggle_service;
 		public static service.timerservice timer;

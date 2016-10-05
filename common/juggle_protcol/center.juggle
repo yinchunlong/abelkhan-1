@@ -30,6 +30,6 @@ module center_call_logic{
 }
 
 module center_call_hub{
-	void distribute_dbproxy_address(string type, string ip, int port, string uuid);
+	void distribute_server_address(string type, string ip, int port, string uuid);
 
 }

@@ -11,3 +11,9 @@ module hub_call_logic{
 	void hub_call_logic_mothed(string module, string func, array argv);
 
 }
+
+module gate_call_hub{
+	void reg_hub_sucess();
+
+	void client_call_hub(string uuid, string module, string func, array argv);
+}

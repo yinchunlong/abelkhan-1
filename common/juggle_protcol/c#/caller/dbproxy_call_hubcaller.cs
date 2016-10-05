@@ -32,7 +32,7 @@ namespace caller
             call_module_method("ack_updata_persisted_object", _argv);
         }
 
-        public void ack_get_object_info(String argv0,String argv1)
+        public void ack_get_object_info(String argv0,ArrayList argv1)
         {
             ArrayList _argv = new ArrayList();
             _argv.Add(argv0);

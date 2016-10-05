@@ -50,6 +50,10 @@ namespace center
 			_accept_gm_service = new service.acceptnetworkservice (gm_ip, gm_port, _gm_process);
 
 			timer = new service.timerservice ();
+
+			_juggle_service = new service.juggleservice ();
+			_juggle_service.add_process (_center_process);
+			_juggle_service.add_process (_gm_process);
 		}
 
 		public void poll(Int64 tick)

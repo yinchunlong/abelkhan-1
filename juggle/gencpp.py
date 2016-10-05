@@ -16,16 +16,16 @@ def gen(inputdir, outputdir):
 
         if not os.path.isdir(outputdir):
                 os.mkdir(outputdir)
-        if not os.path.isdir(outputdir + '\\caller'):
-                os.mkdir(outputdir + '\\caller')
-        if not os.path.isdir(outputdir + '\\module'):
-                os.mkdir(outputdir + '\\module')
+        if not os.path.isdir(outputdir + '//caller'):
+                os.mkdir(outputdir + '//caller')
+        if not os.path.isdir(outputdir + '//module'):
+                os.mkdir(outputdir + '//module')
                 
         for filename in os.listdir(inputdir):
                 fname = os.path.splitext(filename)[0]
                 fex = os.path.splitext(filename)[1]
                 if fex == '.juggle':
-                        file = open(inputdir + '\\' + filename, 'r')
+                        file = open(inputdir + '//' + filename, 'r')
                         genfilestr = file.readlines()
 
                         keydict = jparser.parser(genfilestr)
@@ -37,12 +37,12 @@ def gen(inputdir, outputdir):
                                 defmodulelist.append(module_name)
                                 
                                 callercode = gencaller.gencaller(module_name, funcs)
-                                file = open(outputdir + '\\caller\\' + module_name + 'caller.h', 'w')
+                                file = open(outputdir + '//caller//' + module_name + 'caller.h', 'w')
                                 file.write(callercode)
                                 file.close
 
                                 modulecode = genmodule.genmodule(module_name, funcs)
-                                file = open(outputdir + '\\module\\' + module_name + 'module.h', 'w')
+                                file = open(outputdir + '//module//' + module_name + 'module.h', 'w')
                                 file.write(modulecode)
                                 file.close
 

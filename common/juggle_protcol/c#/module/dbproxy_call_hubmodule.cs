@@ -44,14 +44,14 @@ namespace module
             }
         }
 
-        public delegate void ack_get_object_infohandle(String argv0, String argv1);
+        public delegate void ack_get_object_infohandle(String argv0, ArrayList argv1);
         public event ack_get_object_infohandle onack_get_object_info;
         public void ack_get_object_info(ArrayList _event)
         {
             if(onack_get_object_info != null)
             {
                 var argv0 = ((String)_event[0]);
-                var argv1 = ((String)_event[1]);
+                var argv1 = ((ArrayList)_event[1]);
                 onack_get_object_info( argv0,  argv1);
             }
         }

@@ -4,7 +4,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProjectGuid>{9C09315C-188C-4611-9AD8-CE81A3D30D5C}</ProjectGuid>
-    <OutputType>Library</OutputType>
+    <OutputType>Exe</OutputType>
     <RootNamespace>hub</RootNamespace>
     <AssemblyName>hub</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
@@ -184,6 +184,21 @@
     </Compile>
     <Compile Include="..\..\..\common\module\csharp\module.cs">
       <Link>module.cs</Link>
+    </Compile>
+    <Compile Include="gate_msg_handle.cs" />
+    <Compile Include="gatemanager.cs" />
+    <Compile Include="gateproxy.cs" />
+    <Compile Include="..\..\..\common\juggle_protcol\c#\caller\gate_call_hubcaller.cs">
+      <Link>gate_call_hubcaller.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\common\juggle_protcol\c#\caller\hub_call_gatecaller.cs">
+      <Link>hub_call_gatecaller.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\common\juggle_protcol\c#\module\gate_call_hubmodule.cs">
+      <Link>gate_call_hubmodule.cs</Link>
+    </Compile>
+    <Compile Include="..\..\..\common\juggle_protcol\c#\module\hub_call_gatemodule.cs">
+      <Link>hub_call_gatemodule.cs</Link>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
