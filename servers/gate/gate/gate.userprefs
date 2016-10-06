@@ -1,10 +1,6 @@
-﻿<Properties StartupItem="logic/logic.csproj">
+﻿<Properties StartupItem="gate.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="logic/center_msg_handle.cs">
-    <Files>
-      <File FileName="logic/center_msg_handle.cs" Line="1" Column="1" />
-    </Files>
-  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

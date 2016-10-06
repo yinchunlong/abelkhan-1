@@ -15,5 +15,5 @@ module hub_call_logic{
 module gate_call_hub{
 	void reg_hub_sucess();
 
-	void client_call_hub(string uuid, string module, string func, array argv);
+	//void client_call_hub(string uuid, string module, string func, array argv);
 }
