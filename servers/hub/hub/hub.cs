@@ -63,7 +63,7 @@ namespace hub
 			_gate_msg_handle = new gate_msg_handle(modules);
 			_gate_call_hub = new module.gate_call_hub();
 			_gate_call_hub.onreg_hub_sucess += _gate_msg_handle.onreg_hub_sucess;
-			_gate_call_hub.onclient_call_hub += _gate_msg_handle.client_call_logic;
+			//_gate_call_hub.onclient_call_hub += _gate_msg_handle.client_call_logic;
 			_gate_process.reg_module (_gate_call_hub);
 			_connect_gate_servcie = new service.connectnetworkservice (_gate_process);
 			gates = new gatemanager (_connect_gate_servcie);

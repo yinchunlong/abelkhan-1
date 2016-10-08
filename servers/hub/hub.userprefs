@@ -1,18 +1,19 @@
 ﻿<Properties StartupItem="hub/hub.csproj">
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="hub/dbproxyproxy.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="hub/gate_msg_handle.cs">
     <Files>
-      <File FileName="hub/hub.cs" Line="58" Column="66" />
-      <File FileName="hub/gate_msg_handle.cs" Line="29" Column="1" />
+      <File FileName="hub/hub.cs" Line="66" Column="6" />
+      <File FileName="hub/gate_msg_handle.cs" Line="23" Column="5" />
       <File FileName="hub/gatemanager.cs" Line="1" Column="1" />
       <File FileName="hub/gateproxy.cs" Line="1" Column="1" />
-      <File FileName="hub/center_msg_handle.cs" Line="1" Column="1" />
-      <File FileName="hub/dbproxy_msg_handle.cs" Line="33" Column="4" />
-      <File FileName="hub/dbproxyproxy.cs" Line="35" Column="38" />
+      <File FileName="hub/center_msg_handle.cs" Line="34" Column="14" />
+      <File FileName="hub/dbproxy_msg_handle.cs" Line="1" Column="1" />
+      <File FileName="hub/dbproxyproxy.cs" Line="1" Column="1" />
+      <File FileName="../../common/juggle_protcol/c#/module/gate_call_hubmodule.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.hub PreferredExecutionTarget="MonoDevelop.Default" />
