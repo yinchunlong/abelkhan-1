@@ -11,7 +11,7 @@ namespace hub
 			_gate_conn = _conn;
 			current_client_uuid = "";
 
-			clients = new Dictionary<string, gateproxy>();
+			//clients = new Dictionary<string, gateproxy>();
 			ch_gateproxys = new Dictionary<juggle.Ichannel, gateproxy>();
 			gates = new Dictionary<string, gateproxy>();
 		}
@@ -34,19 +34,19 @@ namespace hub
 			return null;
 		}
 
-        public void call_client(String uuid, String module, String func, params object[] _argvs)
-		{
-			if (clients.ContainsKey(uuid))
-			{
-				ArrayList _argvs_list = new ArrayList();
-				foreach (var o in _argvs)
-				{
-					_argvs_list.Add(o);
-				}
-
-				clients[uuid].forward_hub_call_client(uuid, module, func, _argvs_list);
-			}
-		}
+        //public void call_client(String uuid, String module, String func, params object[] _argvs)
+		//{
+		//	if (clients.ContainsKey(uuid))
+		//	{
+		//		ArrayList _argvs_list = new ArrayList();
+		//		foreach (var o in _argvs)
+		//		{
+		//			_argvs_list.Add(o);
+		//		}
+		//
+		//		clients[uuid].forward_hub_call_client(uuid, module, func, _argvs_list);
+		//	}
+		//}
 
 		public void call_group_client(ArrayList uuids, String module, String func, params object[] _argvs)
 		{
@@ -78,7 +78,7 @@ namespace hub
 	
 		public String current_client_uuid;
 
-		private Dictionary<String, gateproxy> clients;
+		//private Dictionary<String, gateproxy> clients;
 
 		private Dictionary<juggle.Ichannel, gateproxy> ch_gateproxys;
 		private Dictionary<String, gateproxy> gates;
