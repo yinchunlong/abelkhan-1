@@ -41,17 +41,17 @@ public:
         int64_t tickcount = 0;
         timer = std::make_shared<service::timerservice>(tick);
         
-        modulemanager = std::make_shared<common.modulemanager>();
+        modulemanager = std::make_shared<common::modulemanager>();
         
-        _process = std::make_shared<juggle.process>();
-        _gate_call_client = std::make_shared<module.gate_call_client>();
+        _process = std::make_shared<juggle::process>();
+        _gate_call_client = std::make_shared<module::gate_call_client>();
         _gate_call_client->onack_connect_server.connect(std::bind(&client::on_ack_connect_server, this, std::placeholders::_1));
         _gate_call_client->oncall_client.connect(std::bind(&client::on_call_client, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         _process->reg_module(_gate_call_client);
         
-        _conn = std::make_shared<service.connectnetworkservice>(_process);
+        _conn = std::make_shared<service::connectnetworkservice>(_process);
         
-        _juggleservice = std::make_shared<service.juggleservice>();
+        _juggleservice = std::make_shared<service::juggleservice>();
         _juggleservice->add_process(_process);
     }
     
@@ -66,8 +66,6 @@ public:
     void on_ack_connect_server(std::string result)
     {
         onConnectServer(result);
-        
-        timer->addticktime(timer->ticktime + 30*1000, heartbeats);
     }
     
     void on_call_client(std::string module_name, std::string func_name, std::vector<boost::any> argvs)
@@ -79,9 +77,11 @@ public:
     {
         try
         {
-            var ch = _conn.connect(ip, port);
+            var ch = _conn->connect(ip, port);
             _client_call_gate = std::make_shared<caller.client_call_gate>(ch);
             _client_call_gate->connect_server(uuid, tick);
+            
+            timer->addticktime(timer->ticktime + 30*1000, heartbeats);
         }
         catch (Exception)
         {
