@@ -47,7 +47,7 @@ namespace gate
 			_hub_msg_handle = new hub_msg_handle(_hubmanager, _clientmanager);
 			_hub_call_gate = new module.hub_call_gate ();
 			_hub_call_gate.onreg_hub += _hub_msg_handle.reg_hub;
-			_hub_call_gate.onforward_hub_call_client += _hub_msg_handle.forward_hub_call_client;
+			//_hub_call_gate.onforward_hub_call_client += _hub_msg_handle.forward_hub_call_client;
 			_hub_call_gate.onforward_hub_call_global_client += _hub_msg_handle.forward_hub_call_global_client;
 			_hub_call_gate.onforward_hub_call_group_client += _hub_msg_handle.forward_hub_call_group_client;
 

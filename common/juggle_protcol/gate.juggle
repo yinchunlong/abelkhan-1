@@ -25,7 +25,7 @@ module logic_call_gate{
 module hub_call_gate{
 	void reg_hub(string uuid);
 
-	void forward_hub_call_client(string uuid, string module, string func, array argv);
+	//void forward_hub_call_client(string uuid, string module, string func, array argv);
 
 	void forward_hub_call_group_client(array uuids, string module, string func, array argv);
 	
