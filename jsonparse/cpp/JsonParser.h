@@ -113,9 +113,11 @@ std::string pack(JsonObject & v){
 	} else if (v.type() == typeid(std::nullptr_t)){
 		_out += _pack(nullptr);
 	} else if (v.type() == typeid(JsonTable)){
-		_out += pack(boost::any_cast<JsonTable>(v));
+		auto v1 = boost::any_cast<JsonTable>(v);
+		_out += pack(v1);
 	} else if (v.type() == typeid(JsonArray)){
-		_out += pack(boost::any_cast<JsonArray>(v));
+		auto v1 = boost::any_cast<JsonArray>(v);
+		_out += pack(v1);
 	}
 
 	if (v.type() == typeid(std::string) || v.type() == typeid(const char *) || v.type() == typeid(char *)){
