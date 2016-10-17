@@ -32,7 +32,7 @@ public:
         
     void process_module_mothed(std::string module_name, std::string func_name, std::vector<boost::any> argvs)
     {
-        if (modules.has_key(module_name))
+        if (modules.find(module_name) != modules.end())
         {
             std::shared_ptr<imodule> _module = modules[module_name];
             

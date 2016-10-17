@@ -30,7 +30,7 @@ public:
     
     void process_method(std::string func_name, std::vector<boost::any> argvs)
     {
-        if (maps.has_key(func_name)){
+        if (maps.find(func_name) != maps.end()){
             maps[func_name](argvs);
         }
     }
