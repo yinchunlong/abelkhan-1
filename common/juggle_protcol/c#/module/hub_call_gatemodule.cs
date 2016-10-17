@@ -23,20 +23,6 @@ namespace module
             }
         }
 
-        public delegate void forward_hub_call_clienthandle(String argv0, String argv1, String argv2, ArrayList argv3);
-        public event forward_hub_call_clienthandle onforward_hub_call_client;
-        public void forward_hub_call_client(ArrayList _event)
-        {
-            if(onforward_hub_call_client != null)
-            {
-                var argv0 = ((String)_event[0]);
-                var argv1 = ((String)_event[1]);
-                var argv2 = ((String)_event[2]);
-                var argv3 = ((ArrayList)_event[3]);
-                onforward_hub_call_client( argv0,  argv1,  argv2,  argv3);
-            }
-        }
-
         public delegate void forward_hub_call_group_clienthandle(ArrayList argv0, String argv1, String argv2, ArrayList argv3);
         public event forward_hub_call_group_clienthandle onforward_hub_call_group_client;
         public void forward_hub_call_group_client(ArrayList _event)
