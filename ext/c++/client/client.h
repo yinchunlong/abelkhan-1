@@ -45,8 +45,8 @@ public:
         
         _process = std::make_shared<juggle::process>();
         _gate_call_client = std::make_shared<module::gate_call_client>();
-        _gate_call_client->onack_connect_server.connect(std::bind(&client::on_ack_connect_server, this, std::placeholders::_1));
-        _gate_call_client->oncall_client.connect(std::bind(&client::on_call_client, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+        _gate_call_client->sigack_connect_serverhandle.connect(std::bind(&client::on_ack_connect_server, this, std::placeholders::_1));
+        _gate_call_client->sigcall_clienthandle.connect(std::bind(&client::on_call_client, this, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
         _process->reg_module(_gate_call_client);
         
         _conn = std::make_shared<service::connectnetworkservice>(_process);
@@ -65,7 +65,7 @@ public:
     boost::signals2::signal<void(std::string)> onConnectServerHandle;
     void on_ack_connect_server(std::string result)
     {
-        onConnectServer(result);
+        onConnectServerHandle(result);
     }
     
     void on_call_client(std::string module_name, std::string func_name, std::vector<boost::any> argvs)
