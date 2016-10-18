@@ -36,7 +36,7 @@ public:
     }
     
 private:
-    std::map<std::string, std::function<void<std::vector<boost::any> > > > maps;
+    std::map<std::string, std::function<void(std::shared_ptr<std::vector<boost::any> > ) > maps;
     
     
 };

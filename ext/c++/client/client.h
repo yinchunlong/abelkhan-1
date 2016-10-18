@@ -70,7 +70,7 @@ public:
         onConnectServerHandle(result);
     }
     
-    void on_call_client(std::string module_name, std::string func_name, std::vector<boost::any> argvs)
+    void on_call_client(std::string module_name, std::string func_name, std::shared_ptr<std::vector<boost::any> > argvs)
     {
         modules->process_module_mothed(module_name, func_name, argvs);
     }
