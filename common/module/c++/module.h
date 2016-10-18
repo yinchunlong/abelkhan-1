@@ -25,7 +25,7 @@ public:
     
     void reg_func(std::string func_name, std::function<void<std::vector<boost::any> > > func)
     {
-        maps.insert(std::make_pair(func_name, func))
+        maps.insert(std::make_pair(func_name, func));
     }
     
     void process_method(std::string func_name, std::vector<boost::any> argvs)

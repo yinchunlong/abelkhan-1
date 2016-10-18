@@ -108,7 +108,6 @@ public:
         _juggleservice->poll(tick);
         timer->poll(tick);
     }
-
     
 public:
     std::string uuid;
@@ -118,9 +117,10 @@ public:
 private:
     std::shared_ptr<service::connectnetworkservice> _conn;
     std::shared_ptr<juggle::process> _process;
-    std::shared_ptr<module::gate_call_client> _gate_call_client;
     std::shared_ptr<service::juggleservice> _juggleservice;
+    std::shared_ptr<module::gate_call_client> _gate_call_client;
     std::shared_ptr<caller::client_call_gate> _client_call_gate;
+
 };
 
 }
