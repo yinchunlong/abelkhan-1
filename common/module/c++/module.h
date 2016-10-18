@@ -23,12 +23,12 @@ public:
     imodule(){
     }
     
-    void reg_func(std::string func_name, std::function<void<std::vector<boost::any> > > func)
+    void reg_func(std::string func_name, std::function<void(std::shared_ptr<std::vector<boost::any> > ) > func)
     {
-        maps.insert(std::make_pair(func_name, func))
+        maps.insert(std::make_pair(func_name, func));
     }
     
-    void process_method(std::string func_name, std::vector<boost::any> argvs)
+    void process_method(std::string func_name, std::shared_ptr<std::vector<boost::any> > argvs)
     {
         if (maps.find(func_name) != maps.end()){
             maps[func_name](argvs);

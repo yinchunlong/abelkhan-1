@@ -27,10 +27,10 @@ public:
         
     void add_module(std::string module_name, std::shared_ptr<imodule> _module)
     {
-        modules.insert(std::make_pair(module_name, _module);
+        modules.insert(std::make_pair(module_name, _module));
     }
         
-    void process_module_mothed(std::string module_name, std::string func_name, std::vector<boost::any> argvs)
+    void process_module_mothed(std::string module_name, std::string func_name, std::shared_ptr<std::vector<boost::any> > argvs)
     {
         if (modules.find(module_name) != modules.end())
         {

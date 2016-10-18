@@ -26,6 +26,8 @@
 #include "timerservice.h"
 #include "config.h"
 #include "JsonParser.h"
+#include "module.h"
+#include "modulemanager.h"
 
 namespace client
 {
@@ -41,7 +43,7 @@ public:
         int64_t tickcount = 0;
         timer = std::make_shared<service::timerservice>(tick);
         
-        modulemanager = std::make_shared<common::modulemanager>();
+        modules = std::make_shared<common::modulemanager>();
         
         _process = std::make_shared<juggle::process>();
         _gate_call_client = std::make_shared<module::gate_call_client>();
@@ -59,7 +61,7 @@ public:
     {
         _client_call_gate->heartbeats(tick);
         
-        timer->addticktime(tick + 30 * 1000, heartbeats);
+        timer->addticktime(tick + 30 * 1000, std::bind(&client::heartbeats, this, std::placeholders::_1));
     }
     
     boost::signals2::signal<void(std::string)> onConnectServerHandle;
@@ -70,18 +72,18 @@ public:
     
     void on_call_client(std::string module_name, std::string func_name, std::vector<boost::any> argvs)
     {
-        modulemanager->process_module_mothed(module_name, func_name, argvs);
+        modules->process_module_mothed(module_name, func_name, argvs);
     }
     
     bool connect_server(std::string ip, short port, int64_t tick)
     {
         try
         {
-            var ch = _conn->connect(ip, port);
-            _client_call_gate = std::make_shared<caller.client_call_gate>(ch);
+            auto ch = _conn->connect(ip, port);
+            _client_call_gate = std::make_shared<caller::client_call_gate>(ch);
             _client_call_gate->connect_server(uuid, tick);
             
-            timer->addticktime(timer->ticktime + 30*1000, heartbeats);
+            timer->addticktime(timer->ticktime + 30*1000, std::bind(&client::heartbeats, this, std::placeholders::_1));
         }
         catch (Exception)
         {
@@ -96,7 +98,7 @@ public:
         _client_call_gate->cancle_server();
     }
     
-    void call_logic(std::string module_name, std::string func_name, std::vector<boost::any> _argvs)
+    void call_logic(std::string module_name, std::string func_name, std::shared_ptr<std::vector<boost::any> > _argvs)
     {
         _client_call_gate->forward_client_call_logic(module_name, func_name, _argvs);
     }
@@ -106,20 +108,19 @@ public:
         _juggleservice->poll(tick);
         timer->poll(tick);
     }
-
     
 public:
     std::string uuid;
-    
-private:
+    std::shared_ptr<common::modulemanager> modules;
     std::shared_ptr<service::timerservice> timer;
-    std::shared_ptr<common::modulemanager> modulemanager;
 
+private:
     std::shared_ptr<service::connectnetworkservice> _conn;
     std::shared_ptr<juggle::process> _process;
-    std::shared_ptr<module::gate_call_client> _gate_call_client;
     std::shared_ptr<service::juggleservice> _juggleservice;
+    std::shared_ptr<module::gate_call_client> _gate_call_client;
     std::shared_ptr<caller::client_call_gate> _client_call_gate;
+
 };
 
 }
