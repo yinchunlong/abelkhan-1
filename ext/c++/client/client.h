@@ -113,10 +113,9 @@ public:
 public:
     std::string uuid;
     std::shared_ptr<common::modulemanager> modules;
-
-private:
     std::shared_ptr<service::timerservice> timer;
 
+private:
     std::shared_ptr<service::connectnetworkservice> _conn;
     std::shared_ptr<juggle::process> _process;
     std::shared_ptr<module::gate_call_client> _gate_call_client;
