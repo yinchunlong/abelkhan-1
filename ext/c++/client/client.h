@@ -79,7 +79,7 @@ public:
     {
         try
         {
-            var ch = _conn->connect(ip, port);
+            auto ch = _conn->connect(ip, port);
             _client_call_gate = std::make_shared<caller::client_call_gate>(ch);
             _client_call_gate->connect_server(uuid, tick);
             
